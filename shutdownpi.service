@@ -1,0 +1,11 @@
+[Unit]
+Description=Shut down Raspberry Pi
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStop=/usr/bin/ssh -t user@host 'sudo shutdown -h now'
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target
